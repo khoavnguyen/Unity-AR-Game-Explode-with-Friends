@@ -58,7 +58,8 @@ public class GameOverState : State
         //Debug.Log("MainMenuState " + gameManager.mainMenuState.name);
         gameManager.SetState(gameManager.mainMenuState);
         gameManager.ResetGame();
-
+        playedOnce = false;
+        explosion.SetActive(false);
         if (goBack != null)
         {
             goBack.SetActive(false);
@@ -69,7 +70,8 @@ public class GameOverState : State
     {
         //Debug.Log("To shared Menu");
         gameManager.SetState(gameManager.sharedModeMenuState);
-
+        playedOnce = false;
+        explosion.SetActive(false);
         if (goBack != null)
         {
             goBack.SetActive(false);
@@ -87,13 +89,13 @@ public class GameOverState : State
         imgTracker.Stop();
         if (!player.isAllGlobalBombsPlanted())
         {
-            
+            explosion.SetActive(true);
             if (player.isMultiplayer())
             {
                 DisplayWinner.text = "Team 2 wins!";
                 if (!playedOnce)
                 {
-                    gameManager.playCheer();
+                    gameManager.playExplode();
                     playedOnce = true;
                 }
             }
@@ -102,7 +104,7 @@ public class GameOverState : State
                 DisplayWinner.text = "You ran out of time! " + player.getDefuserName() + " wins!";
                 if (!playedOnce)
                 {
-                    gameManager.playCheer();
+                    gameManager.playExplode();
                     playedOnce = true;
                 }
             }

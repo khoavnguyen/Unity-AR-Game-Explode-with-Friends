@@ -1,5 +1,9 @@
 # unityARProject
 
+///
+Install bombAR.apk to Android cellphone to play game
+///
+
 1. Have Unity 5.2.1f1 (32 bit) for vuforia
 2. Clone git repository
 3. Open up project folder and open up the game bombgame.unity
